@@ -2,27 +2,41 @@
 
 ## Overview
 
-This AWS Lambda function is designed to automatically process image uploads to an S3 bucket. It will update a `images.json` file with metadata about each uploaded image. If the `images.json` file does not exist, it will be created.
+This AWS Lambda function is designed to automatically process image uploads to an S3 bucket. It will update an `images.json` file with metadata about each uploaded image. If the `images.json` file does not exist, it will be created.
 
 ## How to Use
 
-1. Create an S3 bucket with public read permissions.
-2. Configure the S3 bucket to trigger this Lambda function on image uploads.
-3. Deploy this Lambda function code to your AWS account.
-4. Ensure the Lambda function has the required IAM permissions for S3 read and write access.
-5. After a successful deployment, the Lambda function will be triggered when images are uploaded to the S3 bucket.
+To use this Lambda function, follow these steps:
+
+1. **Create an S3 Bucket with Public Read Permissions**:
+   - Create an S3 bucket in your AWS account.
+   - Configure the bucket to allow public read permissions. This ensures that the Lambda function can access and update the `images.json` file.
+
+2. **Configure S3 Bucket Trigger**:
+   - Configure the S3 bucket to trigger this Lambda function when images are uploaded. This enables the Lambda function to automatically process new uploads.
+
+3. **Deploy the Lambda Function**:
+   - Deploy the Lambda function code to your AWS account. Ensure that it is properly configured to work in your chosen region and with the necessary permissions.
+
+4. **IAM Permissions**:
+   - Ensure the Lambda function has the required IAM (Identity and Access Management) permissions to read and write to the S3 bucket. These permissions are necessary for the Lambda function to interact with S3.
+
+5. **Test and Monitor**:
+   - After a successful deployment, the Lambda function will be automatically triggered when images are uploaded to the S3 bucket. Test the functionality and monitor its performance as needed.
 
 ## Issues Encountered
 
 During the development and deployment of this Lambda function, I encountered the following issues:
 
-- **Issue 1**: _Describe the first issue and how you resolved it._
+- **Issue 1: Bucket Permissions**
+  - **Description**: When initially setting up the S3 bucket, I encountered issues with configuring the correct permissions. I needed to ensure that the bucket had public read permissions so that the Lambda function could access and update the `images.json` file.
+  - **Resolution**: To address this issue, I accessed the AWS S3 console, selected my bucket, and configured the bucket policy and object permissions to allow public read access.
 
-  **Resolution**: _Explain how you solved the issue or worked around it._
+- **Issue 2: URL Access**
+  - **Description**: I faced an issue with accessing the `images.json` file through a web browser. Clicking on the URL opened the file for download rather than displaying it in the browser. This behavior was unexpected as I wanted the JSON file to be viewable in a web page.
+  - **Resolution**: To address this issue, I took several steps, including checking the `Content-Type` metadata, ensuring the correct URL format, and generating a pre-signed URL for temporary access.
 
-- **Issue 2**: _Describe the second issue and how you resolved it._
-
-  **Resolution**: _Explain how you solved the issue or worked around it._
+These resolutions helped me overcome the encountered issues and ensured the correct functionality of my Lambda function and access to the `images.json` file.
 
 ## Link to images.json
 
